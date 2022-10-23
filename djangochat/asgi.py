@@ -1,5 +1,9 @@
 import os
 
+# Just to test git script
+
+
+
 from django.core.asgi import get_asgi_application
 
 from channels.auth import AuthMiddlewareStack

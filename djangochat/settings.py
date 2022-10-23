@@ -65,7 +65,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'djangochat.wsgi.application'
-# used to long lasting connection
 ASGI_APPLICATION = 'djangochat.asgi.application'
 
 # instead user redis in production, no it is in server memory, after restast desapears since it's sqllite 

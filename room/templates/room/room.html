@@ -12,10 +12,21 @@
 
         <div class="chat-messages space-y-3" id='chat-messages'>
             {% for message in messages %}
-                <div class="p-4 bg-gray-200 rounded-xl">
+
+                {% if message.user.username == request.user.username  %}
+                <div class="p-4 bg-teal-500 rounded-xl pl-6">
                     <p class="font-semibold">{{ message.user.username }}</p>
                     <p>{{ message.content }}</p>
                 </div> 
+                {% else %}
+                    <div class="p-4 bg-gray-200 rounded-xl">
+                        <p class="font-semibold">{{ message.user.username }}</p>
+                        <p>{{ message.content }}</p>
+                    </div> 
+                
+                {% endif %}
+
+
             {% endfor %}
         </div>
 

@@ -25,7 +25,15 @@ class ChatConsumer(AsyncWebsocketConsumer):
         username = data['username']
         room = data['room']
         
-        await self.save_message(username, room, message)
+        wordOne = 'destroy'
+        wordTwo = 'destroychat'
+        
+        if message == wordOne:
+            await self.delete_all_messages(room)
+        elif message == wordTwo:
+            await self.delete_chat_messages(room)
+        else:
+            await self.save_message(username, room, message)
         
         await self.channel_layer.group_send(
             self.room_group_name,
@@ -54,3 +62,15 @@ class ChatConsumer(AsyncWebsocketConsumer):
         room = Room.objects.get(slug=room)
         
         Message.objects.create(user=user, room=room, content=message)
+    
+    @sync_to_async
+    def delete_all_messages(self, room):
+        room = Room.objects.get(slug=room)
+        
+        Message.objects.all().delete()
+
+    @sync_to_async
+    def delete_chat_messages(self, room):
+        room = Room.objects.get(slug=room)
+        
+        Message.objects.filter(room=room).delete()

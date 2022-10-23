@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}{% endblock title %} Djangochat</title>
+    <title>{% block title %}{% endblock title %} 5-minutes messenger t</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       .chat-messages {
@@ -13,10 +13,10 @@
       }
     </style>
   </head>
-  <body class="bg-teal-600">
+  <body class="bg-teal-600 font-mono">
     <nav class="flex items-center justify-between px-4 py-6 bg-teal-800">
       <div>
-        <a href="/" class="text-xl text-white">Djangochat</a>
+        <a href="/" class="text-xl text-white">5-minutes messenger </a>
       </div>
       <div class="flex items-center space-x-4">
         {% if request.user.is_authenticated %}
